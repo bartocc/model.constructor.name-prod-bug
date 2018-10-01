@@ -1,57 +1,28 @@
-# foo
+# Description
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+I'd like to understand why `model.constructor.name` is not available in prod builds
+while it works in dev and test envs.
 
-## Prerequisites
+To reproduce
 
-You will need the following things properly installed on your computer.
+- `ember serve`
+- `open http://localhost:4200`
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/)
-* [Yarn](https://yarnpkg.com/)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+You should see:
 
-## Installation
+```
+model.constructor.name: ArticleModel
+model.constructor.modelName: article
+```
 
-* `git clone <repository-url>` this repository
-* `cd foo`
-* `yarn install`
+Now stop the server and start it again in prod env
 
-## Running / Development
+- `ember serve --environment production`
+- `open http://localhost:4200`
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+You should see something like this:
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `yarn lint:js`
-* `yarn lint:js --fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+```
+model.constructor.name: n
+model.constructor.modelName: article
+```
